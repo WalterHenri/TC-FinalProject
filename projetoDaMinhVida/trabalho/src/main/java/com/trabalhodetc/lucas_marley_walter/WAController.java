@@ -105,7 +105,7 @@ public class WAController {
         if (optionUnitySelected == 1 || at2.verificaSeAutomatoDeterministico(at2)) {
             label02Unity.setText(path);
         } else {
-            at1 = null;
+            at2 = null;
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("JFlap volume 2");
