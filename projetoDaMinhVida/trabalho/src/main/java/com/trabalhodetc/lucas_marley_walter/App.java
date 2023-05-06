@@ -1,14 +1,18 @@
 package com.trabalhodetc.lucas_marley_walter;
 
+import javax.swing.UIManager;
 
 public class App {
     public static void main(String[] args) {
         
-        /*try {
+       // Automato e = Automato.loadFromJff("D:\\Documentos\\UFS\\TC\\teste.jff");
+        //Conversor.converter(e);
+        //AutomatoWriter.saveInJff("D:\\Documentos\\UFS\\TC\\teste2.jff", e);
+        try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         //ChatGpt chat = new ChatGpt();
         //chat.setPath("a.jff");
         //chat.request("crie um automato que aceita números pares de 0");
