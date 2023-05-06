@@ -22,11 +22,15 @@ public class MainWindowController {
     @FXML
     private Button open;
     @FXML
+    private Button gptButton;
+    @FXML
     private Button unity;
     @FXML
     private Button concatenation;
     @FXML
     private Button complement;
+    @FXML
+    private Button star;
     @FXML
     private Button intersect;
     @FXML
@@ -183,6 +187,17 @@ public class MainWindowController {
         vista.abrir(borderPane);
     }
 
+    @FXML
+    void criarGpt() {
+        AnchorPane workArea;
+        try {
+            workArea = FXMLLoader.load(getClass().getResource("WAChatGpt.fxml"));
+            borderPane.setCenter(workArea);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void unir() {
 
         desHoverGeral(1);
@@ -231,6 +246,18 @@ public class MainWindowController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void estrela() {
+        AnchorPane workArea;
+        try {
+            workArea = FXMLLoader.load(getClass().getResource("WAOperationStar.fxml"));
+            borderPane.setCenter(workArea);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void converter() {
         desHoverGeral(5);
