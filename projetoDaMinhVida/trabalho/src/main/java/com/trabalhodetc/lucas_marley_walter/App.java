@@ -5,11 +5,11 @@ import javax.swing.UIManager;
 public class App {
     public static void main(String[] args) {
         
-        try {
+        /*try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         //ChatGpt chat = new ChatGpt();
         //chat.setPath("a.jff");
         //chat.request("crie um automato que aceita números pares de 0");

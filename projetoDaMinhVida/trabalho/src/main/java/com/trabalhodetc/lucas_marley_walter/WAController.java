@@ -73,7 +73,19 @@ public class WAController {
         at1 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at1.carregaDados(path);
 
-        label01Unity.setText(path);
+        //System.out.println(at1.verificaSeAutomatoDeterministico(at1));
+        if(optionUnitySelected == 1 || at1.verificaSeAutomatoDeterministico(at1)){
+            label01Unity.setText(path);
+        } else {
+            at1 = null;
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("JFlap volume 2");
+            alert.setContentText("Selecione outro arquivo.");
+            alert.setHeaderText("Não é um autômato determinístico!");
+            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -82,16 +94,44 @@ public class WAController {
         path = getPath(fileChooser);
         at2 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at2.carregaDados(path);
-        label02Unity.setText(path);
+        
+        if (optionUnitySelected == 1 || at2.verificaSeAutomatoDeterministico(at2)) {
+            label02Unity.setText(path);
+        } else {
+            at1 = null;
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("JFlap volume 2");
+            alert.setContentText("Selecione outro arquivo.");
+            alert.setHeaderText("Não é um autômato determinístico!");
+            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.showAndWait();
+        }
     }
 
     @FXML
     public void saveUnity() {
         com.trabalhodetc.uniao_afds_afns.Automato result = new com.trabalhodetc.uniao_afds_afns.Automato();
+
+        boolean operacaoRealizada = false;
+
         if(optionUnitySelected == 1){
             result = result.uniaoAFN(at1, at2);
+            operacaoRealizada = true;
         }else{
-            result = result.uniaoAFD(at1, at2);
+
+            if (at1.verificaSeAutomatoDeterministico(at1) && at2.verificaSeAutomatoDeterministico(at2)) {
+               result = result.uniaoAFD(at1, at2); 
+               operacaoRealizada = true;
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("JFlap volume 2");
+                alert.setContentText("Operação não pode ser realizada, é necessário que os autômatos sejam determinísticos.");
+                alert.setHeaderText("Selecione os autômatos novamente.");
+                alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+                alert.showAndWait();
+            }
+            
         }
         try {
             com.trabalhodetc.uniao_afds_afns.AutomatoWriter.escreveAutomato(result, path);
@@ -99,12 +139,14 @@ public class WAController {
             System.out.println("culpa de jonathan");
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("JFlap volume 2");
-        alert.setContentText("Your automaton has already been saved.");
-        alert.setHeaderText("Completed union!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
-        alert.showAndWait();
+        if (operacaoRealizada) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("JFlap volume 2");
+            alert.setContentText("Your automaton has already been saved.");
+            alert.setHeaderText("Completed union!");
+            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.showAndWait();   
+        }
     }
 
 
