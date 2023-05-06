@@ -63,14 +63,16 @@ public class WAController {
         }
     }
 
-    com.trabalhodetc.uniao_afds_afns.Automato at1 = new com.trabalhodetc.uniao_afds_afns.Automato();
-    com.trabalhodetc.uniao_afds_afns.Automato at2 = new com.trabalhodetc.uniao_afds_afns.Automato();
+    com.trabalhodetc.uniao_afds_afns.Automato at1;
+    com.trabalhodetc.uniao_afds_afns.Automato at2;
 
     @FXML
     public void select01Unity() {
         JFileChooser fileChooser = new JFileChooser();
         path = getPath(fileChooser);
+        at1 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at1.carregaDados(path);
+
         label01Unity.setText(path);
     }
 
@@ -78,6 +80,7 @@ public class WAController {
     public void select02Unity() {
         JFileChooser fileChooser = new JFileChooser();
         path = getPath(fileChooser);
+        at2 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at2.carregaDados(path);
         label02Unity.setText(path);
     }
@@ -166,15 +169,15 @@ public class WAController {
     private Button select02Concatenation;
 
 
-    com.trabalhodetc.AutomatoG3.Automato auto1 = new com.trabalhodetc.AutomatoG3.Automato();
-    com.trabalhodetc.AutomatoG3.Automato auto2 = new com.trabalhodetc.AutomatoG3.Automato(); 
+    com.trabalhodetc.AutomatoG3.Automato auto1;
+    com.trabalhodetc.AutomatoG3.Automato auto2;
 
     @FXML
     public void saveConcatenation() {
         
         com.trabalhodetc.AutomatoG3.DocumentoXML doc = new com.trabalhodetc.AutomatoG3.DocumentoXML(); //objeto doc criado da classe "DocumentoXML"
         
-        doc.concatenacao(auto1, auto2,path); 
+        doc.concatenacao(auto1, auto2, path); 
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -186,9 +189,9 @@ public class WAController {
 
     @FXML
     public void select01Concatenation() {
-        
         JFileChooser fileChooser = new JFileChooser();
         path = getSavePath(fileChooser); 
+        auto1 = new com.trabalhodetc.AutomatoG3.Automato();
         auto1.setLocalArquivo(path);
         label01Concatenation.setText(path);
     }
@@ -198,6 +201,7 @@ public class WAController {
         
         JFileChooser fileChooser = new JFileChooser();
         path = getSavePath(fileChooser); 
+        auto2 = new com.trabalhodetc.AutomatoG3.Automato();
         auto2.setLocalArquivo(path);
         label02Concatenation.setText(path);
     }
@@ -279,8 +283,6 @@ public class WAController {
     }
 
 
-
-
     @FXML
     private Label labelMinimization;
 
@@ -292,6 +294,7 @@ public class WAController {
 
     @FXML
     public void saveMinimization() { 
+        Minimizador.minimizar(automato);
         Automato.saveInJff(path, automato);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -306,13 +309,12 @@ public class WAController {
         JFileChooser fileChooser = new JFileChooser();
         path = getPath(fileChooser);
         automato = Automato.loadFromJff(path);
-        //Minimizador.minimizar(automato);
-        
         labelMinimization.setText(path);
     }
 
 
     static String getPath(JFileChooser fileChooser) {
+
         if (fileChooser.showOpenDialog(fileChooser) != JFileChooser.APPROVE_OPTION) {
             return null;
         }

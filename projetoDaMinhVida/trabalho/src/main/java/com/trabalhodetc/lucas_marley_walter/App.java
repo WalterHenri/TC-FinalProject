@@ -10,9 +10,10 @@ public class App {
             e.printStackTrace();
         }
         ChatGpt chat = new ChatGpt();
-        chat.request("como voce se sente sendo escravizado pelos alunos de alcides?");
-    
-
+        chat.setPath("a.jff");
+        chat.request("crie um automato que aceita números pares de 0");
+        
+        System.out.println(chat.buffer.toString());
         //MainWindow mainWindow = new MainWindow();
         //mainWindow.run();
          

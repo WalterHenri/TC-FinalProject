@@ -64,7 +64,7 @@ public class Intersecionador {
                 }
 
                 Estado t1 = automato1.buscaSeq(transicao1);
-                Estado t2 = automato2.buscaSeq(transicao1);
+                Estado t2 = automato2.buscaSeq(transicao2);
 
                 String result = t1.getNome() + "-" + t2.getNome();
                 e.adicionarTransicao(simbolo, novosEstados.indexOf(result));
@@ -88,6 +88,7 @@ public class Intersecionador {
 
         }
         Minimizador.removerInaceciveis(resultado);
+        Minimizador.adicionarEstadoConsumidor(resultado);
         return resultado;
     }
 
