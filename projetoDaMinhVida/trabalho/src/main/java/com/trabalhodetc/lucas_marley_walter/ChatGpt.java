@@ -13,7 +13,7 @@ import com.theokanning.openai.service.OpenAiService;
 import io.reactivex.Flowable;
 
 public class ChatGpt {
-    private static final String apiKey = "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";
+    private static final String apiKey = "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";
 
     String response =  "";
 
@@ -42,21 +42,25 @@ public class ChatGpt {
 
         Flowable<ChatCompletionChunk> flowableResult = service.streamChatCompletion(chatCompletionRequest).doOnError(Throwable::printStackTrace);
          // Create a StringBuilder object to store the result
-         StringBuilder buffer = new StringBuilder();
+        StringBuilder buffer = new StringBuilder();
+        
+
          // Subscribe to the Flowable object and print the result
          flowableResult.subscribe(chunk -> {
              chunk.getChoices().forEach(choice -> {
                  String result = choice.getMessage().getContent();
                  if (result != null) {
-                     buffer.append(result);
-                     System.out.print(choice.getMessage().getContent());                    
+                    buffer.append(result);
+                    System.out.print(result);                    
                  }
              });
          }, Throwable::printStackTrace, () -> System.out.println());
 
-         System.out.print(buffer.toString());
-        
         service.shutdownExecutor();
+
+        System.out.print(buffer.toString().length());
+        
+        
     }
 
 }

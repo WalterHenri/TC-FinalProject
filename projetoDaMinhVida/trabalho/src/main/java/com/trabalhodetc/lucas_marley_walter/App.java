@@ -10,7 +10,7 @@ public class App {
             e.printStackTrace();
         }
         ChatGpt chat = new ChatGpt();
-        chat.request("eu queria que voce fizesse um afd com alfabeto 0 e 1 que aceita toda palavra terminada em 0");
+        chat.request("como voce se sente sendo escravizado pelos alunos de alcides?");
     
 
         //MainWindow mainWindow = new MainWindow();
