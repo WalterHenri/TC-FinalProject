@@ -26,9 +26,7 @@ public class Conversor {
         List<String> estados = new ArrayList<>();
         estados.add(inicial);
         int pilha = 1;
-
         while(true){
-
             for (String simbolo : alfabeto) {
                 String r = praOndeVai(afn, inicial, simbolo);
                 if(r == null){
@@ -105,7 +103,8 @@ public class Conversor {
                     builder.append(pularLambdas(afn, tp) + "-");
                 }
                 if(tp.apenasLambda() == false){
-                    builder.append(tp.getNome() + "-");
+                    if(!builder.toString().contains(tp.getNome()))
+                        builder.append(tp.getNome() + "-");
                 }
             }
         }   
