@@ -5,9 +5,7 @@ import javax.swing.UIManager;
 public class App {
     public static void main(String[] args) {
         
-       Automato e = Automato.loadFromJff("D:\\Documentos\\UFS\\TC\\teste.jff");
-        Automato afd = Conversor.converter(e);
-        AutomatoWriter.saveInJff("D:\\Documentos\\UFS\\TC\\teste2.jff", afd);
+    
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception ex) {
