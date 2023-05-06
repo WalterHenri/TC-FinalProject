@@ -26,7 +26,7 @@
                                  </font>
                               </Text>
                               <Label fx:id="label01Unity" layoutX="11.0" layoutY="42.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
-                              <Button fx:id="select01Unity" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#select01Unity" onMouseClicked="#select01Unity" styleClass="openButton" text="Select">
+                              <Button fx:id="select01Unity" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#select01Unity" styleClass="openButton" text="Select">
                                  <font>
                                     <Font name="SansSerif Bold" size="13.0" />
                                  </font>
@@ -55,7 +55,7 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <Button fx:id="saveUnity" layoutX="349.0" layoutY="487.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#saveUnity" onMouseClicked="#saveUnity" styleClass="saveButton" text="Save">
+                  <Button fx:id="saveUnity" layoutX="349.0" layoutY="487.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#saveUnity" styleClass="saveButton" text="Save">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>
