@@ -22,7 +22,7 @@
                         <Font name="SansSerif Regular" size="15.0" />
                      </font>
                   </Text>
-                  <VBox layoutX="21.0" layoutY="157.0" prefHeight="409.0" prefWidth="192.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0">
+                  <VBox layoutX="25.0" layoutY="108.0" prefHeight="409.0" prefWidth="192.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="17.0">
                      <children>
                         <Button fx:id="open" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrir" onMouseClicked="#abrir" onMouseEntered="#hoveropen" onMouseExited="#deshoveropen" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open">
                            <graphic>
@@ -37,6 +37,21 @@
                            </font>
                            <VBox.margin>
                               <Insets bottom="8.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Create with GPT">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/inteligence.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Microsoft Sans Serif" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Button>
                         <Line endX="91.29289245605469" layoutX="111.0" layoutY="291.0" startX="-100.0">
