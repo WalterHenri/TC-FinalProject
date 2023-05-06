@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.trabalhodetc.comp.model;
+package com.trabalhodetc.comp;
 import org.w3c.dom.Element;
 
 public class Transicao {
