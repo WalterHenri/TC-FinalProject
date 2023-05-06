@@ -14,7 +14,7 @@
          <children>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="workArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="saveConvert" layoutX="189.0" layoutY="378.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#saveConvert" onMouseClicked="#saveConvert" styleClass="saveButton" text="Save">
+                  <Button fx:id="saveConvert" layoutX="189.0" layoutY="378.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#saveConvert" styleClass="saveButton" text="Save">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>
@@ -29,7 +29,7 @@
                                  </font>
                               </Text>
                               <Label fx:id="labelConvert" layoutX="11.0" layoutY="42.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
-                              <Button fx:id="selectConvert" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#selectConvert" onMouseClicked="#selectConvert" styleClass="openButton" text="Select">
+                              <Button fx:id="selectConvert" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#selectConvert" styleClass="openButton" text="Select">
                                  <font>
                                     <Font name="SansSerif Bold" size="13.0" />
                                  </font>

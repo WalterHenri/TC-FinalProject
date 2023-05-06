@@ -14,7 +14,7 @@
          <children>
             <Pane fx:id="primaryArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="workArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="saveStar" layoutX="349.0" layoutY="487.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#saveStar" onMouseClicked="#saveStar" styleClass="saveButton" text="Save">
+                  <Button fx:id="saveStar" layoutX="349.0" layoutY="487.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#saveStar" styleClass="saveButton" text="Save">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>
@@ -29,7 +29,7 @@
                                  </font>
                               </Text>
                               <Label fx:id="labelStar" layoutX="11.0" layoutY="42.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
-                              <Button fx:id="selectStar" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#selectionStar" onMouseClicked="#selectionStar" styleClass="openButton" text="Select">
+                              <Button fx:id="selectStar" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#selectionStar" styleClass="openButton" text="Select">
                                  <font>
                                     <Font name="SansSerif Bold" size="13.0" />
                                  </font>

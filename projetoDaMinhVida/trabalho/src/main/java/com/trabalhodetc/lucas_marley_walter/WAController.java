@@ -52,14 +52,14 @@ public class WAController {
     public void afdSelectButton() {
         optionUnitySelected = 2;
         changeColors();
-    }
+    };
     private void changeColors(){
         if(optionUnitySelected == 1){
             afdButton.setStyle("-fx-background-color: #272727;");
-            afnButton.setStyle("-fx-background-color: #717171;");
+            afnButton.setStyle("-fx-background-color: #FFC700;");
         }else if(optionUnitySelected == 2){
             afnButton.setStyle("-fx-background-color: #272727;");
-            afdButton.setStyle("-fx-background-color: #717171;");
+            afdButton.setStyle("-fx-background-color: #FFC700;");
         }
     }
 
@@ -251,12 +251,12 @@ public class WAController {
     private Button selectStar;
 
     @FXML
-    void saveStar(MouseEvent event) {
+    public void saveStar() {
 
     }
 
     @FXML
-    void selectionStar(MouseEvent event) {
+    public void selectionStar() {
         JFileChooser fileChooser = new JFileChooser();
         path = getSavePath(fileChooser);
         automato = Automato.loadFromJff(path);

@@ -19,8 +19,20 @@ import com.theokanning.openai.completion.chat.ChatMessageRole;
 import com.theokanning.openai.service.OpenAiService;
 
 import io.reactivex.Flowable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 public class ChatGpt {
+
+    @FXML
+    Button sendButton;
+
+    @FXML
+    TextArea askText;
+
+
+
     private static final String apiKey = "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";
 
     CompletableFuture<String> futureResult = new CompletableFuture<>();

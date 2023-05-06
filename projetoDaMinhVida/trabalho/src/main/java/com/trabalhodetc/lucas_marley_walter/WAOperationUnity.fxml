@@ -46,7 +46,7 @@
                                  </font>
                               </Text>
                               <Label fx:id="label02Unity" layoutX="11.0" layoutY="42.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
-                              <Button fx:id="select02Unity" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onAction="#select02Unity" onMouseClicked="#select02Unity" styleClass="openButton" text="Select">
+                              <Button fx:id="select02Unity" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#select02Unity" styleClass="openButton" text="Select">
                                  <font>
                                     <Font name="SansSerif Bold" size="13.0" />
                                  </font>

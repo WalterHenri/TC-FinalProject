@@ -46,7 +46,7 @@ public class MainWindowController {
 
     public void init(Stage stage) {
 
-        bools = new boolean[7];
+        bools = new boolean[9];
         for (int i = 0; i < bools.length; i++) {
             bools[i] = true;
         }
@@ -145,7 +145,25 @@ public class MainWindowController {
             minimization.setStyle("-fx-background-color: #272727;");
     }
 
-    public void menuBar(MouseEvent event) {
+    public void hoverGpt() {
+        gptButton.setStyle("-fx-background-color: #D9A900;");// i dont know just trying
+    }
+
+    public void deshoverGpt() {
+        if (bools[7])
+            gptButton.setStyle("-fx-background-color: #272727;");
+    }
+
+    public void hoverStar() {
+        star.setStyle("-fx-background-color: #717171;");// i dont know just trying
+    }
+
+    public void deshoverStar() {
+        if (bools[8])
+        star.setStyle("-fx-background-color: #272727;");
+    }
+
+    public void menuBar() {
         AnchorPane workArea;
         try {
             workArea = FXMLLoader.load(getClass().getResource("WAHomeInterface.fxml"));
@@ -177,6 +195,10 @@ public class MainWindowController {
                 convertAfnToAfd.setStyle("-fx-background-color: #272727;");
             if (j != 6)
                 minimization.setStyle("-fx-background-color: #272727;");
+            if (j != 7)
+                gptButton.setStyle("-fx-background-color: #272727;");
+            if (j != 8)
+                star.setStyle("-fx-background-color: #272727;");
 
         }
     }
@@ -188,7 +210,8 @@ public class MainWindowController {
     }
 
     @FXML
-    void criarGpt() {
+    public void criarGpt() {
+        desHoverGeral(7);
         AnchorPane workArea;
         try {
             workArea = FXMLLoader.load(getClass().getResource("WAChatGpt.fxml"));
@@ -248,7 +271,8 @@ public class MainWindowController {
     }
 
     @FXML
-    void estrela() {
+    public void estrela() {
+        desHoverGeral(8);
         AnchorPane workArea;
         try {
             workArea = FXMLLoader.load(getClass().getResource("WAOperationStar.fxml"));
