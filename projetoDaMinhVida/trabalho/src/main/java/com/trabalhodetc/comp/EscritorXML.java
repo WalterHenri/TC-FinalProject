@@ -1,4 +1,4 @@
-package controller.XMLCodec;
+package com.trabalhodetc.comp;
 
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.Transformer;

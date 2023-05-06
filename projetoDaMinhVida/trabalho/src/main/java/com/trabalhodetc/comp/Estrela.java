@@ -1,8 +1,6 @@
-package controller.operation;
+package com.trabalhodetc.comp;
 import java.util.ArrayList;
 
-import model.Automato;
-import model.Estado;
 
 public class Estrela extends Operacao {
     

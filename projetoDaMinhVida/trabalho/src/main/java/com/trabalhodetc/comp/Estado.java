@@ -1,4 +1,4 @@
-package model;
+package com.trabalhodetc.comp;
 import java.util.ArrayList;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
