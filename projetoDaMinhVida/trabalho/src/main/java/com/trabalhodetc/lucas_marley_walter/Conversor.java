@@ -12,7 +12,7 @@ public class Conversor {
     public static Automato converter(Automato afn) {
         afn.atualizarNomes();
         afn.sort();
-
+        Minimizador.removerInaceciveis(afn);
         Automato afd = new Automato();
         Set<String> alfabeto = new HashSet<>();
         for (String string : afn.getAlfabetoAsArray()) {
@@ -147,12 +147,7 @@ public class Conversor {
             for (Integer integer : transicoes) {
                 Estado e = afn.getEstado(afn.binarySearch(integer));
                 if(e.getId() != estado.getId() && !builder.toString().contains(e.getNome())){
-                    try{
-                        pularLambdas(afn, e, builder);
-                    }
-                    catch (StackOverflowError sta){
-                        
-                    }
+                    pularLambdas(afn, e, builder);
                 }
             }
         }
