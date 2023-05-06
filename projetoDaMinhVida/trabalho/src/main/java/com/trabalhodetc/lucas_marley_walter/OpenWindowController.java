@@ -65,10 +65,9 @@ public class OpenWindowController {
     public void OpenJflap() {
         
         try {
-            
-            CommandLine cmdLine = CommandLine.parse("java -jar JFLAP.jar " + path);
-            DefaultExecutor executor = new DefaultExecutor();
-            executor.execute(cmdLine);
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "JFLAP.jar", path);
+            Process process = pb.start();
+            process.supportsNormalTermination();
             
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());

@@ -38,7 +38,7 @@
                             <AnchorPane visible="false" />
                           </content>
                         </ScrollPane>
-                        <Button fx:id="sendButton" layoutX="528.0" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: TRANSPARENT;">
+                        <Button fx:id="sendButton" layoutX="528.0" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendMessage" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: TRANSPARENT;">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

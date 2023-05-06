@@ -1,6 +1,5 @@
 package com.trabalhodetc.lucas_marley_walter;
 
-import javax.swing.UIManager;
 
 public class App {
     public static void main(String[] args) {
@@ -15,6 +14,7 @@ public class App {
         //chat.request("crie um automato que aceita números pares de 0");
         //chat.setPath("a.jff");
         //chat.saveFile();
+        
         MainWindow mainWindow = new MainWindow();
         mainWindow.run();
          
