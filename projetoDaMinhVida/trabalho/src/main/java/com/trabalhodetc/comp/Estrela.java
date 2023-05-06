@@ -1,36 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.trabalhodetc.comp.operation;
+package com.trabalhodetc.comp;
 import java.util.ArrayList;
 
-import com.trabalhodetc.comp.model.Automato;
-import com.trabalhodetc.comp.model.Estado;
 
 public class Estrela extends Operacao {
     
     public Estrela() {
-        maxAutomaton = 1;
-        qtdAutomaton = 0;
-        automatons = new Automato[maxAutomaton];
+        automaton = new Automato();
     }
 
     public Automato makeOperation() {
         Automato autEntrada = getAutomaton(0);
         if (autEntrada == null){
-            System.out.println("O autômato setado é inválido!");
             return null;
         }
         Automato autSaida = new Automato(autEntrada);
         ArrayList<Estado> estadosFinais = autSaida.getEstadosFinais();
         if (estadosFinais == null){
-            System.out.println("O autômato não possui estados finais!");
+        
             return null;
         }
         Estado antigoInicial = autSaida.getEstadoInicial();
         if (antigoInicial == null){
-            System.out.println("O autômato não possui estado inicial!");
             return null;
         }
         //Criar um estado novo (inicial e final)

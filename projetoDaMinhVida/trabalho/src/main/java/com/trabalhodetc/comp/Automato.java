@@ -1,22 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.trabalhodetc.comp.model;
+package com.trabalhodetc.comp;
 import java.util.ArrayList;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+
 /**
- *
- * @author Iagol
- * 
- * 
  * Implementação da modelagem do autômato padrão do sistema.
+ * 
+ * 
+ * @author Pedro Dantas
+ * @author Tiago Santiago
  */
- 
 public class Automato {
     private ArrayList<Transicao> transicoes;
     private ArrayList<String> alfabeto;
@@ -25,6 +22,7 @@ public class Automato {
     private int idAtual;
 
     /**
+     * Construtor utilizado pelo grupo de conversão AFN-AFD
      * @param estado
      * inicia o automato com um unico estado, sendo ele o estado inicial contido no Jflap
      * @param transicao

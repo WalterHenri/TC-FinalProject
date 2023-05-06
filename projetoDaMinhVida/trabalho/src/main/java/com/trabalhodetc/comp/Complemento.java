@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.trabalhodetc.comp.operation;
-import com.trabalhodetc.comp.model.Automato;
-import com.trabalhodetc.comp.model.Estado;
+package com.trabalhodetc.comp;
 
 public class Complemento extends Operacao {
     
     public Complemento() {
-        maxAutomaton = 1;
-        qtdAutomaton = 0;
-        automatons = new Automato[maxAutomaton];
+        automaton = new Automato();
     }
 
     public Automato makeOperation() {
