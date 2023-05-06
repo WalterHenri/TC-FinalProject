@@ -24,7 +24,7 @@
                   </Text>
                   <VBox layoutX="25.0" layoutY="57.0" prefHeight="409.0" prefWidth="192.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="17.0">
                      <children>
-                        <Button fx:id="open" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrir" onMouseClicked="#abrir" onMouseEntered="#hoveropen" onMouseExited="#deshoveropen" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open">
+                        <Button fx:id="open" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#abrir" onMouseEntered="#hoveropen" onMouseExited="#deshoveropen" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
