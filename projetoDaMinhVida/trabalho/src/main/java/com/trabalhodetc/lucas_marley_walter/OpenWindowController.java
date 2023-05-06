@@ -7,6 +7,9 @@ import java.util.Vector;
 
 import javax.swing.JFileChooser;
 
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -45,7 +48,7 @@ public class OpenWindowController {
 
     private com.trabalhodetc.lucas_marley_walter.Automato automato;
 
-    private String path;
+    private static String path;
 
     public void zoom(ZoomEvent event){
         AnchorPane workArea;
@@ -60,10 +63,15 @@ public class OpenWindowController {
     }
     @FXML
     public void OpenJflap() {
-        try{
-            Runtime.getRuntime().exec("java -jar jflap.jar " + path);
-        }catch (IOException e){
-            System.out.println("voce deve colocar jflap como aplicativo padrao para abir jff");
+        
+        try {
+            System.out.println(path);
+            CommandLine cmdLine = CommandLine.parse("java -jar JFLAP.jar " + path);
+            DefaultExecutor executor = new DefaultExecutor();
+            executor.execute(cmdLine);
+            
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
         }
     }
 
@@ -171,7 +179,7 @@ public class OpenWindowController {
                                 simbol.setText("λ");
                             }
                             simbol.setTranslateX(sx);
-                            simbol.setTranslateY(sy - radius * 4.2);
+                            simbol.setTranslateY(sy - radius * 4.5);
                             simbol.setFont(new Font(radius));
                             simbol.setTextFill(Color.BLACK);
 

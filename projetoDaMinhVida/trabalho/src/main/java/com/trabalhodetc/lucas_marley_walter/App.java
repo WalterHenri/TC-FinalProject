@@ -4,6 +4,7 @@ import javax.swing.UIManager;
 
 public class App {
     public static void main(String[] args) {
+        
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
@@ -13,11 +14,9 @@ public class App {
         //chat.setPath("a.jff");
         //chat.request("crie um automato que aceita números pares de 0");
         
-       
         MainWindow mainWindow = new MainWindow();
         mainWindow.run();
          
-    
 
     }
 

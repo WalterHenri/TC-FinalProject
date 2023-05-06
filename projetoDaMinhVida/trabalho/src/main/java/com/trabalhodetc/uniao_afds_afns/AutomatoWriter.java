@@ -22,7 +22,7 @@ public class AutomatoWriter {
         XMLStreamWriter arquivoSaida = XMLOutputFactory.newFactory()
             .createXMLStreamWriter(arquivo);
 
-        arquivoSaida.writeStartDocument("UTF-8" ,"1.0");
+        //arquivoSaida.writeStartDocument("UTF-8" ,"1.0");
         arquivoSaida.writeComment("Criado com uniao_afd_afn");
         arquivoSaida.writeStartElement("structure");
 
@@ -39,7 +39,7 @@ public class AutomatoWriter {
         escreveEstados(automato.getEstados(), arquivoSaida);
 
         // Escreve a lista de transições
-        arquivoSaida.writeComment("Lista de transições");
+        arquivoSaida.writeComment("Lista de transicoes");
         escreveTransicoes(automato.getTransicoes(), arquivoSaida);
 
         arquivoSaida.writeEndDocument();

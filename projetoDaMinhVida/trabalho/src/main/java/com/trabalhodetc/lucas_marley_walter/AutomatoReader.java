@@ -84,7 +84,8 @@ public class AutomatoReader {
         }
 
         alfabeto.add(read);
-        automato.adicionarTransicao(from, read, to);
+        if(from != null)
+            automato.adicionarTransicao(from, read, to);
     }
 
     private void loadStates(Automato automato) {
