@@ -146,8 +146,14 @@ public class Conversor {
         if (transicoes != null) {
             for (Integer integer : transicoes) {
                 Estado e = afn.getEstado(afn.binarySearch(integer));
-                if(e.getId() != estado.getId() && !builder.toString().contains(e.getNome()))
-                    pularLambdas(afn, e, builder);
+                if(e.getId() != estado.getId() && !builder.toString().contains(e.getNome())){
+                    try{
+                        pularLambdas(afn, e, builder);
+                    }
+                    catch (StackOverflowError sta){
+                        
+                    }
+                }
             }
         }
 

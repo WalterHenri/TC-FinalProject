@@ -39,7 +39,7 @@
                               <Insets bottom="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="gptButton" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#criarGpt" onMouseClicked="#criarGpt" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open with GPT">
+                        <Button fx:id="gptButton" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#criarGpt" onMouseEntered="#hoverGpt" onMouseExited="#deshoverGpt" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open with GPT">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -119,7 +119,7 @@
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="star" alignment="TOP_LEFT" layoutX="10.0" layoutY="307.0" mnemonicParsing="false" onAction="#estrela" onMouseClicked="#estrela" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Star">
+                        <Button fx:id="star" alignment="TOP_LEFT" layoutX="10.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#estrela" onMouseEntered="#hoverStar" onMouseExited="#deshoverStar" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Star">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

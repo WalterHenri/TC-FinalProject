@@ -3,14 +3,12 @@ package com.trabalhodetc.lucas_marley_walter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
-import javax.naming.spi.DirStateFactory.Result;
 
 import com.theokanning.openai.completion.chat.ChatCompletionChunk;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
@@ -19,8 +17,20 @@ import com.theokanning.openai.completion.chat.ChatMessageRole;
 import com.theokanning.openai.service.OpenAiService;
 
 import io.reactivex.Flowable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 public class ChatGpt {
+
+    @FXML
+    Button sendButton;
+
+    @FXML
+    TextArea askText;
+
+
+
     private static final String apiKey = "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";
 
     CompletableFuture<String> futureResult = new CompletableFuture<>();

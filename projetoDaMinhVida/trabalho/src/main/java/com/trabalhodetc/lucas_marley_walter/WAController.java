@@ -16,13 +16,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-
 
 public class WAController {
 
     Automato automato;
     Automato automato2;
+    private static JFileChooser fileChooser = new JFileChooser();
     static public String pathOpen;
 
     String path;
@@ -60,14 +59,14 @@ public class WAController {
     public void afdSelectButton() {
         optionUnitySelected = 2;
         changeColors();
-    }
+    };
     private void changeColors(){
         if(optionUnitySelected == 1){
             afdButton.setStyle("-fx-background-color: #272727;");
-            afnButton.setStyle("-fx-background-color: #717171;");
+            afnButton.setStyle("-fx-background-color: #FFC700;");
         }else if(optionUnitySelected == 2){
             afnButton.setStyle("-fx-background-color: #272727;");
-            afdButton.setStyle("-fx-background-color: #717171;");
+            afdButton.setStyle("-fx-background-color: #FFC700;");
         }
     }
 
@@ -102,7 +101,6 @@ public class WAController {
             result = result.uniaoAFD(at1, at2);
         }
 
-        JFileChooser fileChooser = new JFileChooser();
         fileChooser.showSaveDialog(fileChooser);
         String path = fileChooser.getSelectedFile().getAbsolutePath();
         
@@ -140,7 +138,7 @@ public class WAController {
     @FXML
     void saveIntersection() {
         
-        Automato.saveInJff(path, Intersecionador.Intersecionar(automato, automato2));
+        Automato.saveInJff(getSavePath(fileChooser), Intersecionador.Intersecionar(automato, automato2));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -152,7 +150,6 @@ public class WAController {
     String path01;
     @FXML
     public void select01Intersection() {
-        JFileChooser fileChooser = new JFileChooser();
         path = getPath(fileChooser);
         automato = Automato.loadFromJff(path);
         label01Intersection.setText(path);
@@ -160,7 +157,6 @@ public class WAController {
 
     @FXML
     public void select02Intersection() {
-        JFileChooser fileChooser = new JFileChooser();
         path = getPath(fileChooser);
         automato2 = Automato.loadFromJff(path);
         label02Intersection.setText(path);
@@ -190,7 +186,7 @@ public class WAController {
         
         com.trabalhodetc.AutomatoG3.DocumentoXML doc = new com.trabalhodetc.AutomatoG3.DocumentoXML(); //objeto doc criado da classe "DocumentoXML"
         
-        doc.concatenacao(auto1, auto2, path); 
+        doc.concatenacao(auto1, auto2, getSavePath(fileChooser)); 
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -202,8 +198,7 @@ public class WAController {
 
     @FXML
     public void select01Concatenation() {
-        JFileChooser fileChooser = new JFileChooser();
-        path = getSavePath(fileChooser); 
+        path = getPath(fileChooser); 
         auto1 = new com.trabalhodetc.AutomatoG3.Automato();
         auto1.setLocalArquivo(path);
         label01Concatenation.setText(path);
@@ -212,8 +207,7 @@ public class WAController {
     @FXML
     public void select02Concatenation() {
         
-        JFileChooser fileChooser = new JFileChooser();
-        path = getSavePath(fileChooser); 
+        path = getPath(fileChooser); 
         auto2 = new com.trabalhodetc.AutomatoG3.Automato();
         auto2.setLocalArquivo(path);
         label02Concatenation.setText(path);
@@ -234,13 +228,12 @@ public class WAController {
 
     com.trabalhodetc.comp.Automato starAutomato;
     @FXML
-    void saveComplement(MouseEvent event) {
+    void saveComplement() {
 
         Complemento complemento = new Complemento();
         complemento.setAutomaton(starAutomato);
         com.trabalhodetc.comp.Automato e = complemento.makeOperation();
         try{
-            JFileChooser fileChooser = new JFileChooser();
             fileChooser.showSaveDialog(fileChooser);
             ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
             construtorXML.setAutomato(e);
@@ -258,13 +251,14 @@ public class WAController {
             alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
             alert.showAndWait();
             
-        }catch (NullPointerException asd){
+        }catch (Exception asd){
+            System.out.println();
         }
     }
 
     @FXML
-    void selectionComplement(MouseEvent event) {
-        JFileChooser fileChooser = new JFileChooser();
+    void selectionComplement() {
+
         path = getSavePath(fileChooser);
         File file = new File(path);
         LeitorXML leitor = new LeitorXML();
@@ -288,12 +282,13 @@ public class WAController {
     private Button selectStar;
 
     @FXML
-    void saveStar(MouseEvent event) {
+    void saveStar() {
+        System.out.println("AAAAAA");
         Estrela estrela = new Estrela();
         estrela.setAutomaton(starAutomato);
         com.trabalhodetc.comp.Automato e = estrela.makeOperation();
         try{
-            JFileChooser fileChooser = new JFileChooser();
+
             fileChooser.showSaveDialog(fileChooser);
             ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
             construtorXML.setAutomato(e);
@@ -316,10 +311,8 @@ public class WAController {
     }
 
     @FXML
-    void selectionStar(MouseEvent event) {
-        System.out.println("AAAAAAAAAAAAAAAAAA");
-        JFileChooser fileChooser = new JFileChooser();
-        path = getSavePath(fileChooser);
+    void selectionStar( ) {
+        path = getPath(fileChooser);
         File file = new File(path);
         LeitorXML leitor = new LeitorXML();
         leitor.carregaArquivoXML(file);
@@ -327,7 +320,7 @@ public class WAController {
         starAutomato = new com.trabalhodetc.comp.Automato();
         starAutomato.setEstados(docEntrada.getElementsByTagName("state"));
         starAutomato.loadTransicoes(docEntrada.getElementsByTagName("transition"));
-        labelComplement.setText(path);
+        labelStar.setText(path);
     }
 
 
@@ -347,7 +340,7 @@ public class WAController {
     public void saveConvert() {
 
         Automato afd = Conversor.converter(automato);
-        Automato.saveInJff(path, afd);
+        Automato.saveInJff(getSavePath(fileChooser), afd);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -360,8 +353,7 @@ public class WAController {
 
     @FXML
     public void selectConvert() {
-        JFileChooser fileChooser = new JFileChooser();
-        path = getSavePath(fileChooser);
+        path = getPath(fileChooser);
         automato = Automato.loadFromJff(path);
         labelConvert.setText(path);
     }
@@ -379,8 +371,7 @@ public class WAController {
     @FXML
     public void saveMinimization() { 
         Minimizador.minimizar(automato);
-        Automato.saveInJff(path, automato);
-
+        Automato.saveInJff(getSavePath(fileChooser), automato);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -392,7 +383,6 @@ public class WAController {
 
     @FXML
     public void selectMinimization() {
-        JFileChooser fileChooser = new JFileChooser();
         path = getPath(fileChooser);
         automato = Automato.loadFromJff(path);
         labelMinimization.setText(path);
