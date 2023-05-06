@@ -7,13 +7,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-/**
- * Implementação da modelagem do autômato padrão do sistema.
- * 
- * 
- * @author Pedro Dantas
- * @author Tiago Santiago
- */
 public class Automato {
     private ArrayList<Transicao> transicoes;
     private ArrayList<String> alfabeto;
@@ -21,17 +14,7 @@ public class Automato {
     private SortedSet<Integer> idsUsados;
     private int idAtual;
 
-    /**
-     * Construtor utilizado pelo grupo de conversão AFN-AFD
-     * @param estado
-     * inicia o automato com um unico estado, sendo ele o estado inicial contido no Jflap
-     * @param transicao
-     * primeira transição lida pelo controller que será utilizada posteriormente, 
-     * além de adiconar a letra que é lida na lista do alfabeto do automato
-     * 
-     * a lista de alfabeto é utilizada apenas pelos desenvolvedores
-     * para fins de analise de códigos
-     */
+
     public Automato(Estado estado, Transicao transicao){
         this.estados = new ArrayList<Estado>();
         this.alfabeto = new ArrayList<String>();
@@ -86,24 +69,11 @@ public class Automato {
         idAtual = getMenorId();
     }
 
-    /**
-     * Função que adiciona um novo estado na lista de estados do automato.
-     * Ao invés de retornar o endereço de um novo estado esse método 
-     * adiciona um novo estado no objeto do automato
-     * @param estado
-     * Novo estado a ser adicionado no automato
-     */
     public void addEstado(Estado estado) {
         this.estados.add(estado);  
     }
 
-    /**
-     * Função que adiciona uma nova transição na lista de transições do automato.
-     * Ao invés de retornar o endereço de uma nova transição esse método 
-     * adiciona uma nova transição no objeto do automato
-     * @param transicao
-     * Nova transição a ser adicionada no automato
-     */
+
     public void addTransicao(Transicao transicao) {
         this.transicoes.add(transicao);
         if (!this.alfabeto.contains(transicao.getValor()) && !transicao.getValor().equals("lambda")) this.alfabeto.add(transicao.getValor());
@@ -178,25 +148,15 @@ public class Automato {
         return estados;
     }
 
-    /**
-     * Getter Padrão da lista de transições
-     * @return
-     * Retorna a lista de transições contidas no automato
-     */
     public ArrayList<Transicao> getTransicoes() {
         return transicoes;
     }
 
-    /**
-     * Getter Padrão da lista do alfabeto da linguagem
-     * @return
-     * Retorna todas as "letras" que integram o alfabeto da linguagem
-     */
     public ArrayList<String> getAlfabeto() {
         return alfabeto;
     }
 
-    //Retorna um objeto do tipo Estado de acordo com id
+
     public Estado getEstadoPorId(int id) {
         for (Estado estado : estados){
             if (estado.getId() == id){

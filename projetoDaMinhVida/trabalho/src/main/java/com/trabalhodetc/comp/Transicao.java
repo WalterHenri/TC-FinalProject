@@ -61,17 +61,11 @@ public class Transicao {
     public String getValor() {
         return valor;
     }
-/**
- * 
- * @return
- */
+
     public Estado getFrom() {
         return from;
     }
-/**
- * 
- * @return
- */
+
     public Estado getTo() {
         return to;
     }

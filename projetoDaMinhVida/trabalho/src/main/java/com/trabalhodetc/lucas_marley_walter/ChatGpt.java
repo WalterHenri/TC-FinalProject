@@ -22,12 +22,8 @@ import io.reactivex.Flowable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.stage.Popup;
-import javafx.stage.Screen;
-import okhttp3.internal.ws.RealWebSocket.Message;
 
 public class ChatGpt {
 

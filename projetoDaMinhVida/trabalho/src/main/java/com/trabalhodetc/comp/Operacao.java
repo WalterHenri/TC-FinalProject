@@ -1,12 +1,6 @@
 package com.trabalhodetc.comp;
 
 
-/**
- * Classe abstrata a ser herdada pelas operações padrões do sistema.
- * 
- * 
- * @author Pedro Dantas
- */
 public abstract class Operacao {
     public Automato automaton;
 
