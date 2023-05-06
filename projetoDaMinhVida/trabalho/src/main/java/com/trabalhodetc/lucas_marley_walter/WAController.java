@@ -91,8 +91,9 @@ public class WAController {
         path = getPath(fileChooser);
         at2 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at2.carregaDados(path);
-        label02Unity.setText(path);
 
+        label02Unity.setText(path);
+    
     }
 
     @FXML
