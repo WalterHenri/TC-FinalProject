@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="9.0">
          <children>
-            <Pane styleClass="workArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Pane onZoom="#zoom" styleClass="workArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane minHeight="117.0" minWidth="231.0" styleClass="areaOpenBox" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="18.0">
                <children>
                   <Button fx:id="buttonOpenJflap" layoutX="9.0" layoutY="60.0" minHeight="44.0" minWidth="209.0" mnemonicParsing="false" onAction="#OpenJflap" onMouseClicked="#OpenJflap" styleClass="areaButtonBox" text="Open with JFlap">

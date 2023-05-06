@@ -1,21 +1,24 @@
 package com.trabalhodetc.lucas_marley_walter;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
-import java.awt.Desktop;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.CubicCurve;
+
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
@@ -36,7 +39,7 @@ public class OpenWindowController {
     private Vector<Polygon> arrows = new Vector<Polygon>();
     private Vector<Label> ids = new Vector<Label>();
     private Vector<Label> praOndeVai = new Vector<Label>();
-
+    private Vector<CubicCurve> praEleMesmo = new Vector<CubicCurve>();
     private Polygon inicial = new Polygon(0.0, 0.0, 30.0, -30.0, 30.0, 30.0);
     private Vector<Circle> finais = new Vector<Circle>();
 
@@ -44,12 +47,21 @@ public class OpenWindowController {
 
     private String path;
 
-
+    public void zoom(ZoomEvent event){
+        AnchorPane workArea;
+        try {
+            workArea = FXMLLoader.load(getClass().getResource("WAOpenInterface.fxml"));
+            double a = event.getZoomFactor();
+            workArea.setScaleX(workArea.getScaleX() * a);
+            workArea.setScaleY(workArea.getScaleY() * a);
+        } catch (Exception e) {
+            System.out.println("não é assim");
+        }
+    }
     @FXML
     public void OpenJflap() {
-        File selected = new File(path);
         try{
-            Desktop.getDesktop().open(selected);
+            Runtime.getRuntime().exec("java -jar jflap.jar " + path);
         }catch (IOException e){
             System.out.println("voce deve colocar jflap como aplicativo padrao para abir jff");
         }
@@ -85,8 +97,8 @@ public class OpenWindowController {
 
             for (int i = 0; i < automato.getNumeroDeEstados(); i++) {
 
-                double x = automato.getEstado(i).getPosition().x * 3;
-                double y = automato.getEstado(i).getPosition().y;
+                double x = automato.getEstado(i).getPosition().x + 300;
+                double y = automato.getEstado(i).getPosition().y + 200;
                 Circle c = new Circle(x, y, radius);
                 c.setId(automato.getEstado(i).getNome());  
                 c.setStroke(Color.BLACK);
@@ -129,6 +141,45 @@ public class OpenWindowController {
                     for (Integer j : transas) {
                         if(j == null){
                             continue;
+                        }else if(j == i){
+                            double sx = circulos.get(i).getCenterX();
+                            double sy = circulos.get(i).getCenterY();
+
+                            CubicCurve c = new CubicCurve(sx, sy - radius, sx - radius * 4,sy - radius * 4,sx + radius * 4,sy-radius * 4,sx,sy-radius);
+                            c.setStrokeWidth(2);
+                            c.setStroke(javafx.scene.paint.Color.BLACK);
+                            c.setFill(Color.TRANSPARENT);
+                            c.setEffect(dropShadow);
+                            
+
+                            Polygon arrow = new Polygon();
+                            arrow.getPoints().addAll(0.0, 0.0, 20.0, 10.0, 0.0, 20.0);
+                            arrow.setFill(Color.BLACK);
+                            arrow.setStroke(Color.BLACK);
+                            arrow.setEffect(dropShadow);
+                            
+                            // Position the arrow at the end of the line
+                            
+                            arrow.setTranslateX(sx - 10);
+                            arrow.setTranslateY(sy - radius - 10);
+    
+                            arrow.setRotate(90);
+                            
+    
+                            Label simbol = new Label(a);
+                            if(a.equals("")){
+                                simbol.setText("λ");
+                            }
+                            simbol.setTranslateX(sx);
+                            simbol.setTranslateY(sy - radius * 4.2);
+                            simbol.setFont(new Font(radius));
+                            simbol.setTextFill(Color.BLACK);
+
+                            praOndeVai.add(simbol);
+                            praEleMesmo.add(c);
+                            arrows.add(arrow);
+                            
+                            continue;
                         }
                         double sX = circulos.get(i).getCenterX();
                         double sY = circulos.get(i).getCenterY();
@@ -140,6 +191,8 @@ public class OpenWindowController {
                         seta.setFill(Color.BLACK);
                         seta.setStroke(Color.BLACK);
                         seta.setStrokeWidth(radius/7);
+
+
                         Polygon arrow = new Polygon();
                         arrow.getPoints().addAll(0.0, 0.0, 20.0, 10.0, 0.0, 20.0);
                         arrow.setFill(Color.BLACK);
@@ -156,6 +209,9 @@ public class OpenWindowController {
                         
 
                         Label simbol = new Label(a);
+                        if(a.equals("")){
+                            simbol.setText("λ");
+                        }
                         simbol.setTranslateX((sX - eX)/2 + eX);
                         simbol.setTranslateY((sY - eY)/2 + eY);
                         simbol.setFont(new Font(radius));
@@ -175,6 +231,7 @@ public class OpenWindowController {
             workArea.getChildren().addAll(setas);
             workArea.getChildren().addAll(circulos);
             workArea.getChildren().addAll(arrows); 
+            workArea.getChildren().addAll(praEleMesmo);
             workArea.getChildren().addAll(ids);
             workArea.getChildren().addAll(praOndeVai);  
             workArea.getChildren().add(inicial);

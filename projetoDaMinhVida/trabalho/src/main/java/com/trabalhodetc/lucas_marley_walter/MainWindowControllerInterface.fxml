@@ -24,7 +24,7 @@
                   </Text>
                   <VBox layoutX="21.0" layoutY="157.0" prefHeight="409.0" prefWidth="192.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0">
                      <children>
-                        <Button fx:id="open" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrir" onMouseClicked="#abrir" onMouseEntered="#hoveropen" onMouseExited="#deshoveropen" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open">
+                        <Button fx:id="open" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#abrir" onMouseEntered="#hoveropen" onMouseExited="#deshoveropen" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -44,7 +44,7 @@
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Line>
-                        <Button fx:id="unity" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#unir" onMouseClicked="#unir" onMouseEntered="#hoverUnity" onMouseExited="#deshoverUnity" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Unity">
+                        <Button fx:id="unity" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#unir" onMouseEntered="#hoverUnity" onMouseExited="#deshoverUnity" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Unity">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -59,7 +59,7 @@
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="intersect" alignment="TOP_LEFT" layoutX="10.0" layoutY="49.0" mnemonicParsing="false" onAction="#intersectar" onMouseClicked="#intersectar" onMouseEntered="#hoverIntersect" onMouseExited="#deshoverIntersect" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" stylesheets="@MainWindowStyle.css" text="Intersection">
+                        <Button fx:id="intersect" alignment="TOP_LEFT" layoutX="10.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#intersectar" onMouseEntered="#hoverIntersect" onMouseExited="#deshoverIntersect" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" stylesheets="@MainWindowStyle.css" text="Intersection">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -74,7 +74,7 @@
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="concatenation" alignment="TOP_LEFT" layoutX="10.0" layoutY="88.0" mnemonicParsing="false" onAction="#concatenar" onMouseClicked="#concatenar" onMouseEntered="#hoverConcatenation" onMouseExited="#deshoverConcatenation" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Concatenation">
+                        <Button fx:id="concatenation" alignment="TOP_LEFT" layoutX="10.0" layoutY="88.0" mnemonicParsing="false" onMouseClicked="#concatenar" onMouseEntered="#hoverConcatenation" onMouseExited="#deshoverConcatenation" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Concatenation">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -89,7 +89,7 @@
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="complement" alignment="TOP_LEFT" layoutX="10.0" layoutY="127.0" mnemonicParsing="false" onAction="#complementar" onMouseClicked="#complementar" onMouseEntered="#hoverComplement" onMouseExited="#deshoverComplement" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Complement">
+                        <Button fx:id="complement" alignment="TOP_LEFT" layoutX="10.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#complementar" onMouseEntered="#hoverComplement" onMouseExited="#deshoverComplement" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Complement">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -108,7 +108,7 @@
                            <VBox.margin>
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin></Line>
-                        <Button fx:id="convertAfnToAfd" alignment="TOP_LEFT" layoutX="10.0" layoutY="166.0" mnemonicParsing="false" onAction="#converter" onMouseClicked="#converter" onMouseEntered="#hoverAfnToAfd" onMouseExited="#deshoverAfnToAfd" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Convert AFN to AFD">
+                        <Button fx:id="convertAfnToAfd" alignment="TOP_LEFT" layoutX="10.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#converter" onMouseEntered="#hoverAfnToAfd" onMouseExited="#deshoverAfnToAfd" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Convert AFN to AFD">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -123,7 +123,7 @@
                               <Insets bottom="8.0" top="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="minimization" alignment="TOP_LEFT" layoutX="10.0" layoutY="205.0" mnemonicParsing="false" onAction="#minimizar" onMouseClicked="#minimizar" onMouseEntered="#hoverMinimization" onMouseExited="#deshoverMinimization" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Minimization">
+                        <Button fx:id="minimization" alignment="TOP_LEFT" layoutX="10.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#minimizar" onMouseEntered="#hoverMinimization" onMouseExited="#deshoverMinimization" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Minimization">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

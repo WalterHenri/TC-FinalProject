@@ -315,9 +315,8 @@ public class WAController {
 
     static String getPath(JFileChooser fileChooser) {
 
-        if (fileChooser.showOpenDialog(fileChooser) != JFileChooser.APPROVE_OPTION) {
-            return null;
-        }
+        fileChooser.showOpenDialog(fileChooser);
+
         return fileChooser.getSelectedFile().getAbsolutePath();
     }
 

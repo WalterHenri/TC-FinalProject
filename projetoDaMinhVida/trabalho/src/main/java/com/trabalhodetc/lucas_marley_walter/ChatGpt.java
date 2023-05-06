@@ -18,13 +18,18 @@ import com.theokanning.openai.service.OpenAiService;
 import io.reactivex.Flowable;
 
 public class ChatGpt {
-    private static final String apiKey = "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";
+    private static final String apiKey = "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";
+
     private String path;
+
     String response =  "";
+
     StringBuilder buffer = new StringBuilder();
+
     public void setPath(String path){
         this.path = path;
     }
+
     public void request(String request) {
 
         OpenAiService service = new OpenAiService(apiKey);
@@ -48,8 +53,7 @@ public class ChatGpt {
         
             
         Flowable<ChatCompletionChunk> flowableResult = service.streamChatCompletion(chatCompletionRequest).doOnError(Throwable::printStackTrace);
-         // Create a StringBuilder object to store the result
-        //Essa porra é assincrona. Como se fosse o setBlocking(false) no socket
+        
         flowableResult.subscribe(chunk -> {
             chunk.getChoices().forEach(choice -> {
                 String result = choice.getMessage().getContent();
@@ -59,12 +63,13 @@ public class ChatGpt {
                 }
             });
         }, Throwable::printStackTrace, () -> System.out.println());
+
         
+
+        System.out.println(buffer.toString());
         service.shutdownExecutor();
             
-       
-
-        // Subscribe to the Flowable object and print the result        
+            
         
     }
 

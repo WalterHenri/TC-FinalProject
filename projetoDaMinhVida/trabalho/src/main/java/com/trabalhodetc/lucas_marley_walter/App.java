@@ -9,13 +9,13 @@ public class App {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ChatGpt chat = new ChatGpt();
-        chat.setPath("a.jff");
-        chat.request("crie um automato que aceita números pares de 0");
+        //ChatGpt chat = new ChatGpt();
+        //chat.setPath("a.jff");
+        //chat.request("crie um automato que aceita números pares de 0");
         
-        System.out.println(chat.buffer.toString());
-        //MainWindow mainWindow = new MainWindow();
-        //mainWindow.run();
+       
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.run();
          
     
 
