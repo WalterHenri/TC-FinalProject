@@ -89,7 +89,7 @@ public class WAController {
     public void saveUnity() {
         com.trabalhodetc.uniao_afds_afns.Automato result = new com.trabalhodetc.uniao_afds_afns.Automato();
         if(optionUnitySelected == 1){
-            result = result.uniaoAFD(at1, at2);
+            result = result.uniaoAFN(at1, at2);
         }else{
             result = result.uniaoAFD(at1, at2);
         }
