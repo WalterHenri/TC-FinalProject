@@ -47,7 +47,7 @@ public class WAController {
     @FXML
     private Button afdButton;
 
-    public int optionUnitySelected = 1; //inicializa afn pre selecionado
+    public int optionUnitySelected = 1; // inicializa afn pre selecionado
 
     @FXML
     public void afnSelectButton() {
@@ -60,11 +60,12 @@ public class WAController {
         optionUnitySelected = 2;
         changeColors();
     };
-    private void changeColors(){
-        if(optionUnitySelected == 1){
+
+    private void changeColors() {
+        if (optionUnitySelected == 1) {
             afdButton.setStyle("-fx-background-color: #272727;");
             afnButton.setStyle("-fx-background-color: #FFC700;");
-        }else if(optionUnitySelected == 2){
+        } else if (optionUnitySelected == 2) {
             afnButton.setStyle("-fx-background-color: #272727;");
             afdButton.setStyle("-fx-background-color: #FFC700;");
         }
@@ -80,19 +81,8 @@ public class WAController {
         at1 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at1.carregaDados(path);
 
-        //System.out.println(at1.verificaSeAutomatoDeterministico(at1));
-        if(optionUnitySelected == 1 || at1.verificaSeAutomatoDeterministico(at1)){
-            label01Unity.setText(path);
-        } else {
-            at1 = null;
+        label01Unity.setText(path);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("JFlap volume 2");
-            alert.setContentText("Selecione outro arquivo.");
-            alert.setHeaderText("Não é um autômato determinístico!");
-            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
-            alert.showAndWait();
-        }
     }
 
     @FXML
@@ -101,19 +91,8 @@ public class WAController {
         path = getPath(fileChooser);
         at2 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at2.carregaDados(path);
-        
-        if (optionUnitySelected == 1 || at2.verificaSeAutomatoDeterministico(at2)) {
-            label02Unity.setText(path);
-        } else {
-            at1 = null;
+        label02Unity.setText(path);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("JFlap volume 2");
-            alert.setContentText("Selecione outro arquivo.");
-            alert.setHeaderText("Não é um autômato determinístico!");
-            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
-            alert.showAndWait();
-        }
     }
 
     @FXML
@@ -122,32 +101,34 @@ public class WAController {
 
         boolean operacaoRealizada = false;
 
-        if(optionUnitySelected == 1){
+        Alert alertError = new Alert(Alert.AlertType.INFORMATION);
+        alertError.setTitle("JFlap volume 2");
+        alertError.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+
+        if (optionUnitySelected == 2) {
+            if (!at1.verificaSeAutomatoDeterministico(at1) && !at2.verificaSeAutomatoDeterministico(at2)) {
+                alertError.setContentText("operation cannot be realized the automatons need to be deterministics.");
+                alertError.setHeaderText("try selecting the automatons again.");
+                at1 = null;
+                at2 = null;
+                return;
+            } else {
+                result = result.uniaoAFD(at1, at2);
+                operacaoRealizada = true;
+            }
+        } else {
             result = result.uniaoAFN(at1, at2);
             operacaoRealizada = true;
-        }else{
-
-            if (at1.verificaSeAutomatoDeterministico(at1) && at2.verificaSeAutomatoDeterministico(at2)) {
-               result = result.uniaoAFD(at1, at2); 
-               operacaoRealizada = true;
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("JFlap volume 2");
-                alert.setContentText("Operação não pode ser realizada, é necessário que os autômatos sejam determinísticos.");
-                alert.setHeaderText("Selecione os autômatos novamente.");
-                alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
-                alert.showAndWait();
-            }
-            
         }
 
         fileChooser.showSaveDialog(fileChooser);
+
         String path = fileChooser.getSelectedFile().getAbsolutePath();
-        
+
         try {
             com.trabalhodetc.uniao_afds_afns.AutomatoWriter.escreveAutomato(result, path);
         } catch (Exception e) {
-            System.out.println("culpa de jonathan");
+            System.out.println("falha em salvar arquivo");
         }
 
         if (operacaoRealizada) {
@@ -156,11 +137,9 @@ public class WAController {
             alert.setContentText("Your automaton has already been saved.");
             alert.setHeaderText("Completed union!");
             alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
-            alert.showAndWait();   
+            alert.showAndWait();
         }
     }
-
-
 
     @FXML
     private Label label01Intersection;
@@ -179,7 +158,7 @@ public class WAController {
 
     @FXML
     void saveIntersection() {
-        
+
         Automato.saveInJff(getSavePath(fileChooser), Intersecionador.Intersecionar(automato, automato2));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -189,7 +168,9 @@ public class WAController {
         alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
         alert.showAndWait();
     }
+
     String path01;
+
     @FXML
     public void select01Intersection() {
         path = getPath(fileChooser);
@@ -219,16 +200,18 @@ public class WAController {
     @FXML
     private Button select02Concatenation;
 
-
     com.trabalhodetc.AutomatoG3.Automato auto1;
     com.trabalhodetc.AutomatoG3.Automato auto2;
 
     @FXML
     public void saveConcatenation() {
-        
-        com.trabalhodetc.AutomatoG3.DocumentoXML doc = new com.trabalhodetc.AutomatoG3.DocumentoXML(); //objeto doc criado da classe "DocumentoXML"
-        
-        doc.concatenacao(auto1, auto2, getSavePath(fileChooser)); 
+
+        com.trabalhodetc.AutomatoG3.DocumentoXML doc = new com.trabalhodetc.AutomatoG3.DocumentoXML(); // objeto doc
+                                                                                                       // criado da
+                                                                                                       // classe
+                                                                                                       // "DocumentoXML"
+
+        doc.concatenacao(auto1, auto2, getSavePath(fileChooser));
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
@@ -240,7 +223,7 @@ public class WAController {
 
     @FXML
     public void select01Concatenation() {
-        path = getPath(fileChooser); 
+        path = getPath(fileChooser);
         auto1 = new com.trabalhodetc.AutomatoG3.Automato();
         auto1.setLocalArquivo(path);
         label01Concatenation.setText(path);
@@ -248,16 +231,12 @@ public class WAController {
 
     @FXML
     public void select02Concatenation() {
-        
-        path = getPath(fileChooser); 
+
+        path = getPath(fileChooser);
         auto2 = new com.trabalhodetc.AutomatoG3.Automato();
         auto2.setLocalArquivo(path);
         label02Concatenation.setText(path);
     }
-
-
-
-
 
     @FXML
     private Label labelComplement;
@@ -269,13 +248,14 @@ public class WAController {
     private Button selectComplement;
 
     com.trabalhodetc.comp.Automato starAutomato;
+
     @FXML
     void saveComplement() {
 
         Complemento complemento = new Complemento();
         complemento.setAutomaton(starAutomato);
         com.trabalhodetc.comp.Automato e = complemento.makeOperation();
-        try{
+        try {
             fileChooser.showSaveDialog(fileChooser);
             ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
             construtorXML.setAutomato(e);
@@ -285,15 +265,15 @@ public class WAController {
             String path = fileChooser.getSelectedFile().getAbsolutePath();
             escritor.exportaArquivoXML(path);
             System.out.println("bateu certo");
-            
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("JFlap volume 2");
             alert.setContentText("Your automaton has already been saved.");
             alert.setHeaderText("Completed complement!");
             alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
             alert.showAndWait();
-            
-        }catch (Exception asd){
+
+        } catch (Exception asd) {
             System.out.println();
         }
     }
@@ -312,8 +292,6 @@ public class WAController {
         labelComplement.setText(path);
     }
 
-
-
     @FXML
     private Label labelStar;
 
@@ -329,7 +307,7 @@ public class WAController {
         Estrela estrela = new Estrela();
         estrela.setAutomaton(starAutomato);
         com.trabalhodetc.comp.Automato e = estrela.makeOperation();
-        try{
+        try {
 
             fileChooser.showSaveDialog(fileChooser);
             ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
@@ -340,20 +318,20 @@ public class WAController {
             String path = fileChooser.getSelectedFile().getAbsolutePath();
             escritor.exportaArquivoXML(path);
             System.out.println("bateu certo");
-            
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("JFlap volume 2");
             alert.setContentText("Your automaton has already been saved.");
             alert.setHeaderText("Completed star!");
             alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
             alert.showAndWait();
-            
-        }catch (NullPointerException asd){
+
+        } catch (NullPointerException asd) {
         }
     }
 
     @FXML
-    void selectionStar( ) {
+    void selectionStar() {
         path = getPath(fileChooser);
         File file = new File(path);
         LeitorXML leitor = new LeitorXML();
@@ -364,10 +342,6 @@ public class WAController {
         starAutomato.loadTransicoes(docEntrada.getElementsByTagName("transition"));
         labelStar.setText(path);
     }
-
-
-
-
 
     @FXML
     private Label labelConvert;
@@ -390,7 +364,7 @@ public class WAController {
         alert.setHeaderText("Completed conversion!");
         alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
         alert.showAndWait();
-        
+
     }
 
     @FXML
@@ -399,7 +373,6 @@ public class WAController {
         automato = Automato.loadFromJff(path);
         labelConvert.setText(path);
     }
-
 
     @FXML
     private Label labelMinimization;
@@ -411,7 +384,7 @@ public class WAController {
     private Button selectMinimization;
 
     @FXML
-    public void saveMinimization() { 
+    public void saveMinimization() {
         Minimizador.minimizar(automato);
         Automato.saveInJff(getSavePath(fileChooser), automato);
 
@@ -429,7 +402,6 @@ public class WAController {
         automato = Automato.loadFromJff(path);
         labelMinimization.setText(path);
     }
-
 
     static String getPath(JFileChooser fileChooser) {
 

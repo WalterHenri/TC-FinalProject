@@ -20,6 +20,7 @@ import io.reactivex.Flowable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import okhttp3.internal.ws.RealWebSocket.Message;
 
 public class ChatGpt {
 
@@ -92,6 +93,13 @@ public class ChatGpt {
             
         
     }
+
+    public void sendMessage(){
+        String request = askText.getText();
+        request(request);
+    }
+
+
     public void saveFile(){
 
             try ( BufferedWriter w = new BufferedWriter(new FileWriter(path))) {
