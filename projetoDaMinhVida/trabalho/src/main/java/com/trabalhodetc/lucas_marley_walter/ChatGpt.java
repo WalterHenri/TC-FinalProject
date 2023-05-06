@@ -1,11 +1,14 @@
 package com.trabalhodetc.lucas_marley_walter;
 
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import javax.naming.spi.DirStateFactory.Result;
 
@@ -18,7 +21,9 @@ import com.theokanning.openai.service.OpenAiService;
 import io.reactivex.Flowable;
 
 public class ChatGpt {
-    private static final String apiKey = "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";
+    private static final String apiKey = "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";
+
+    CompletableFuture<String> futureResult = new CompletableFuture<>();
 
     private String path;
 
@@ -43,17 +48,19 @@ public class ChatGpt {
         messages.add(systemMessage);
         messages.add(secondMessage);
         messages.add(userMessage);
+        
+        
+
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder().model("gpt-3.5-turbo")
-                .messages(messages)
-                .n(1)
-                .maxTokens(10000)
-                .logitBias(new HashMap<>())
-                .build();
-                
-        
-            
-        Flowable<ChatCompletionChunk> flowableResult = service.streamChatCompletion(chatCompletionRequest).doOnError(Throwable::printStackTrace);
-        
+            .messages(messages)
+            .n(1)
+            .maxTokens(1000)
+            .logitBias(new HashMap<>())
+            .build();
+
+        Flowable<ChatCompletionChunk> flowableResult = service.streamChatCompletion(chatCompletionRequest)
+            .doOnError(Throwable::printStackTrace);
+
         flowableResult.subscribe(chunk -> {
             chunk.getChoices().forEach(choice -> {
                 String result = choice.getMessage().getContent();
@@ -62,15 +69,28 @@ public class ChatGpt {
                     System.out.print(result);                    
                 }
             });
-        }, Throwable::printStackTrace, () -> System.out.println());
+        }, Throwable::printStackTrace, () -> {
+            String finalResult = buffer.toString();
+            futureResult.complete(finalResult);
+        });
+
 
         
 
-        System.out.println(buffer.toString());
         service.shutdownExecutor();
             
             
         
+    }
+    public void saveFile(){
+
+            try ( BufferedWriter w = new BufferedWriter(new FileWriter(path))) {
+                w.write(futureResult.get());
+            } catch (Exception e) {
+                System.out.println("massa");
+            }
+           
+
     }
 
 }

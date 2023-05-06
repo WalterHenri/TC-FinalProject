@@ -211,19 +211,13 @@ public class WAController {
 
 
     @FXML
-    private Label label01Complement;
-
-    @FXML
-    private Label label02Complement;
+    private Label labelComplement;
 
     @FXML
     private Button saveComplement;
 
     @FXML
-    private Button select01Complement;
-
-    @FXML
-    private Button select02Complement;
+    private Button selectComplement;
 
     @FXML
     void saveComplement(MouseEvent event) {
@@ -237,13 +231,36 @@ public class WAController {
     }
 
     @FXML
-    void select01Complement(MouseEvent event) {
-        System.out.println("bateu certo");
+    void selectionComplement(MouseEvent event) {
+        JFileChooser fileChooser = new JFileChooser();
+        path = getSavePath(fileChooser);
+        automato = Automato.loadFromJff(path);
+        labelComplement.setText(path);
+    }
+
+
+
+
+    @FXML
+    private Label labelStar;
+
+    @FXML
+    private Button saveStar;
+
+    @FXML
+    private Button selectStar;
+
+    @FXML
+    void saveStar(MouseEvent event) {
+
     }
 
     @FXML
-    void select02Complement(MouseEvent event) {
-        System.out.println("bateu certo");
+    void selectionStar(MouseEvent event) {
+        JFileChooser fileChooser = new JFileChooser();
+        path = getSavePath(fileChooser);
+        automato = Automato.loadFromJff(path);
+        labelStar.setText(path);
     }
 
 
@@ -296,6 +313,8 @@ public class WAController {
     public void saveMinimization() { 
         Minimizador.minimizar(automato);
         Automato.saveInJff(path, automato);
+
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("JFlap volume 2");
         alert.setContentText("Your automaton has already been saved.");
