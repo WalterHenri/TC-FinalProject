@@ -39,7 +39,7 @@
                               <Insets bottom="8.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="gptButton" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#criarGpt" onMouseEntered="#hoverGpt" onMouseExited="#deshoverGpt" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Open with GPT">
+                        <Button fx:id="gptButton" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#criarGpt" onMouseEntered="#hoverGpt" onMouseExited="#deshoverGpt" prefHeight="39.0" prefWidth="192.0" styleClass="generalButton" text="Create with GPT">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

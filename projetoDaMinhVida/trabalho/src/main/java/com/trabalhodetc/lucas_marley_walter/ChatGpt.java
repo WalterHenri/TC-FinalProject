@@ -3,14 +3,12 @@ package com.trabalhodetc.lucas_marley_walter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
-import javax.naming.spi.DirStateFactory.Result;
 
 import com.theokanning.openai.completion.chat.ChatCompletionChunk;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
