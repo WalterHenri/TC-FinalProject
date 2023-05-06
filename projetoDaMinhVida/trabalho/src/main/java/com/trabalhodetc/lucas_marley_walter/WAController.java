@@ -1,7 +1,15 @@
 package com.trabalhodetc.lucas_marley_walter;
 
+import java.io.File;
+
 import javax.swing.JFileChooser;
 
+import org.w3c.dom.Document;
+import com.trabalhodetc.comp.Complemento;
+import com.trabalhodetc.comp.ConstrutorDocumentoXML;
+import com.trabalhodetc.comp.EscritorXML;
+import com.trabalhodetc.comp.Estrela;
+import com.trabalhodetc.comp.LeitorXML;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -93,6 +101,11 @@ public class WAController {
         }else{
             result = result.uniaoAFD(at1, at2);
         }
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showSaveDialog(fileChooser);
+        String path = fileChooser.getSelectedFile().getAbsolutePath();
+        
         try {
             com.trabalhodetc.uniao_afds_afns.AutomatoWriter.escreveAutomato(result, path);
         } catch (Exception e) {
@@ -219,25 +232,49 @@ public class WAController {
     @FXML
     private Button selectComplement;
 
+    com.trabalhodetc.comp.Automato starAutomato;
     @FXML
     void saveComplement(MouseEvent event) {
-        System.out.println("bateu certo");
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("JFlap volume 2");
-        alert.setContentText("Your automaton has already been saved.");
-        alert.setHeaderText("Completed complement!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
-        alert.showAndWait();
+
+        Complemento complemento = new Complemento();
+        complemento.setAutomaton(starAutomato);
+        com.trabalhodetc.comp.Automato e = complemento.makeOperation();
+        try{
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showSaveDialog(fileChooser);
+            ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
+            construtorXML.setAutomato(e);
+            construtorXML.configuraDocumento();
+            EscritorXML escritor = new EscritorXML();
+            escritor.setDocumentXML(construtorXML.getDocumentoConstruido());
+            String path = fileChooser.getSelectedFile().getAbsolutePath();
+            escritor.exportaArquivoXML(path);
+            System.out.println("bateu certo");
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("JFlap volume 2");
+            alert.setContentText("Your automaton has already been saved.");
+            alert.setHeaderText("Completed complement!");
+            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.showAndWait();
+            
+        }catch (NullPointerException asd){
+        }
     }
 
     @FXML
     void selectionComplement(MouseEvent event) {
         JFileChooser fileChooser = new JFileChooser();
         path = getSavePath(fileChooser);
-        automato = Automato.loadFromJff(path);
+        File file = new File(path);
+        LeitorXML leitor = new LeitorXML();
+        leitor.carregaArquivoXML(file);
+        Document docEntrada = leitor.getDocumentoLido();
+        starAutomato = new com.trabalhodetc.comp.Automato();
+        starAutomato.setEstados(docEntrada.getElementsByTagName("state"));
+        starAutomato.loadTransicoes(docEntrada.getElementsByTagName("transition"));
         labelComplement.setText(path);
     }
-
 
 
 
@@ -252,15 +289,45 @@ public class WAController {
 
     @FXML
     void saveStar(MouseEvent event) {
-
+        Estrela estrela = new Estrela();
+        estrela.setAutomaton(starAutomato);
+        com.trabalhodetc.comp.Automato e = estrela.makeOperation();
+        try{
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showSaveDialog(fileChooser);
+            ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
+            construtorXML.setAutomato(e);
+            construtorXML.configuraDocumento();
+            EscritorXML escritor = new EscritorXML();
+            escritor.setDocumentXML(construtorXML.getDocumentoConstruido());
+            String path = fileChooser.getSelectedFile().getAbsolutePath();
+            escritor.exportaArquivoXML(path);
+            System.out.println("bateu certo");
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("JFlap volume 2");
+            alert.setContentText("Your automaton has already been saved.");
+            alert.setHeaderText("Completed star!");
+            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.showAndWait();
+            
+        }catch (NullPointerException asd){
+        }
     }
 
     @FXML
     void selectionStar(MouseEvent event) {
+        System.out.println("AAAAAAAAAAAAAAAAAA");
         JFileChooser fileChooser = new JFileChooser();
         path = getSavePath(fileChooser);
-        automato = Automato.loadFromJff(path);
-        labelStar.setText(path);
+        File file = new File(path);
+        LeitorXML leitor = new LeitorXML();
+        leitor.carregaArquivoXML(file);
+        Document docEntrada = leitor.getDocumentoLido();
+        starAutomato = new com.trabalhodetc.comp.Automato();
+        starAutomato.setEstados(docEntrada.getElementsByTagName("state"));
+        starAutomato.loadTransicoes(docEntrada.getElementsByTagName("transition"));
+        labelComplement.setText(path);
     }
 
 
