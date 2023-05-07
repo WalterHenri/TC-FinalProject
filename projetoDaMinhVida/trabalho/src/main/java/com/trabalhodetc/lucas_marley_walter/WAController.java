@@ -102,6 +102,7 @@ public class WAController {
             if (!at1.verificaSeAutomatoDeterministico(at1) && !at2.verificaSeAutomatoDeterministico(at2)) {
                 alertError.setContentText("operation cannot be realized the automatons need to be deterministics.");
                 alertError.setHeaderText("try selecting the automatons again.");
+                alertError.showAndWait();
                 at1 = null;
                 at2 = null;
                 return;
