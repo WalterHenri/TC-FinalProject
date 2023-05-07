@@ -356,7 +356,9 @@ public class WAController {
     @FXML
     public void saveConvert() {
 
+        System.out.println("AAA");
         Automato afd = Conversor.converter(automato);
+        System.out.println("AAA");
         Automato.saveInJff(getSavePath(fileChooser), afd);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

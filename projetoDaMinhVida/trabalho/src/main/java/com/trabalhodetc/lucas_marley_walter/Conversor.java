@@ -12,7 +12,7 @@ public class Conversor {
     public static Automato converter(Automato afn) {
         afn.atualizarNomes();
         afn.sort();
-        Minimizador.removerInaceciveis(afn);
+
         Automato afd = new Automato();
         Set<String> alfabeto = new HashSet<>();
         for (String string : afn.getAlfabetoAsArray()) {
@@ -26,9 +26,7 @@ public class Conversor {
         List<String> estados = new ArrayList<>();
         estados.add(inicial);
         int pilha = 1;
-
         while(true){
-
             for (String simbolo : alfabeto) {
                 String r = praOndeVai(afn, inicial, simbolo);
                 if(r == null){
@@ -105,7 +103,8 @@ public class Conversor {
                     builder.append(pularLambdas(afn, tp) + "-");
                 }
                 if(tp.apenasLambda() == false){
-                    builder.append(tp.getNome() + "-");
+                    if(!builder.toString().contains(tp.getNome()))
+                        builder.append(tp.getNome() + "-");
                 }
             }
         }   
@@ -146,9 +145,8 @@ public class Conversor {
         if (transicoes != null) {
             for (Integer integer : transicoes) {
                 Estado e = afn.getEstado(afn.binarySearch(integer));
-                if(e.getId() != estado.getId() && !builder.toString().contains(e.getNome())){
+                if(e.getId() != estado.getId() && !builder.toString().contains(e.getNome()))
                     pularLambdas(afn, e, builder);
-                }
             }
         }
 
