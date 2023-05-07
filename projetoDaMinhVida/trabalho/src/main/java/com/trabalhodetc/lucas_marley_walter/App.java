@@ -11,11 +11,6 @@ public class App {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        //ChatGpt chat = new ChatGpt();
-        //chat.setPath("a.jff");
-        //chat.request("crie um automato que aceita números pares de 0");
-        //chat.setPath("a.jff");
-        //chat.saveFile();
         
         MainWindow mainWindow = new MainWindow();
         mainWindow.run();
