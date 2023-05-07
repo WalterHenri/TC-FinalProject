@@ -22,15 +22,9 @@ import io.reactivex.Flowable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-<<<<<<< HEAD
-
-import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
-=======
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 
->>>>>>> 736c0372481165a87ca4fec4be51c9b834b0588f
 public class ChatGpt {
 
     @FXML
