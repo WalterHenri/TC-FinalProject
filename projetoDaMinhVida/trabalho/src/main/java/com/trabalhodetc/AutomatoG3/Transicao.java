@@ -4,10 +4,7 @@
  */
 package com.trabalhodetc.AutomatoG3;
 
-/**
- *
- * @author Victor
- */
+
 public class Transicao {
     private String from; //atributo que armazena o estado de onde a transição parte
     private String to; //atributo que armazena o estado para onde a transição vai

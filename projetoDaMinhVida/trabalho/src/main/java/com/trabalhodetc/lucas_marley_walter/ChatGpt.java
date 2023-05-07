@@ -35,7 +35,7 @@ public class ChatGpt {
 
 
 
-    private static final String apiKey = "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";
+    private static final String apiKey = "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";
 
     CompletableFuture<String> futureResult = new CompletableFuture<>();
 

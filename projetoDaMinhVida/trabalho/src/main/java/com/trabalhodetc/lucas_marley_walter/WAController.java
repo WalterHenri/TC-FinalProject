@@ -1,15 +1,7 @@
 package com.trabalhodetc.lucas_marley_walter;
 
-import java.io.File;
-
 import javax.swing.JFileChooser;
 
-import org.w3c.dom.Document;
-import com.trabalhodetc.comp.Complemento;
-import com.trabalhodetc.comp.ConstrutorDocumentoXML;
-import com.trabalhodetc.comp.EscritorXML;
-import com.trabalhodetc.comp.Estrela;
-import com.trabalhodetc.comp.LeitorXML;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -248,24 +240,13 @@ public class WAController {
     @FXML
     private Button selectComplement;
 
-    com.trabalhodetc.comp.Automato starAutomato;
-
     @FXML
     void saveComplement() {
 
-        Complemento complemento = new Complemento();
-        complemento.setAutomaton(starAutomato);
-        com.trabalhodetc.comp.Automato e = complemento.makeOperation();
         try {
-            fileChooser.showSaveDialog(fileChooser);
-            ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
-            construtorXML.setAutomato(e);
-            construtorXML.configuraDocumento();
-            EscritorXML escritor = new EscritorXML();
-            escritor.setDocumentXML(construtorXML.getDocumentoConstruido());
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
-            escritor.exportaArquivoXML(path);
-            System.out.println("bateu certo");
+
+            Complemento.complemento(automato);
+            AutomatoWriter.saveInJff(getSavePath(fileChooser), automato);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("JFlap volume 2");
@@ -274,22 +255,15 @@ public class WAController {
             alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
             alert.showAndWait();
 
-        } catch (Exception asd) {
-            System.out.println();
+        } catch (NullPointerException asd) {
         }
     }
 
     @FXML
     void selectionComplement() {
 
-        path = getSavePath(fileChooser);
-        File file = new File(path);
-        LeitorXML leitor = new LeitorXML();
-        leitor.carregaArquivoXML(file);
-        Document docEntrada = leitor.getDocumentoLido();
-        starAutomato = new com.trabalhodetc.comp.Automato();
-        starAutomato.setEstados(docEntrada.getElementsByTagName("state"));
-        starAutomato.loadTransicoes(docEntrada.getElementsByTagName("transition"));
+        path = getPath(fileChooser);
+        automato = Automato.loadFromJff(path);
         labelComplement.setText(path);
     }
 
@@ -304,21 +278,11 @@ public class WAController {
 
     @FXML
     void saveStar() {
-        System.out.println("AAAAAA");
-        Estrela estrela = new Estrela();
-        estrela.setAutomaton(starAutomato);
-        com.trabalhodetc.comp.Automato e = estrela.makeOperation();
+
         try {
 
-            fileChooser.showSaveDialog(fileChooser);
-            ConstrutorDocumentoXML construtorXML = new ConstrutorDocumentoXML();
-            construtorXML.setAutomato(e);
-            construtorXML.configuraDocumento();
-            EscritorXML escritor = new EscritorXML();
-            escritor.setDocumentXML(construtorXML.getDocumentoConstruido());
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
-            escritor.exportaArquivoXML(path);
-            System.out.println("bateu certo");
+            Estrela.estrela(automato);
+            AutomatoWriter.saveInJff(getSavePath(fileChooser), automato);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("JFlap volume 2");
@@ -334,13 +298,7 @@ public class WAController {
     @FXML
     void selectionStar() {
         path = getPath(fileChooser);
-        File file = new File(path);
-        LeitorXML leitor = new LeitorXML();
-        leitor.carregaArquivoXML(file);
-        Document docEntrada = leitor.getDocumentoLido();
-        starAutomato = new com.trabalhodetc.comp.Automato();
-        starAutomato.setEstados(docEntrada.getElementsByTagName("state"));
-        starAutomato.loadTransicoes(docEntrada.getElementsByTagName("transition"));
+        automato = Automato.loadFromJff(path);
         labelStar.setText(path);
     }
 
