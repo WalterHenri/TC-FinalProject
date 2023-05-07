@@ -35,7 +35,7 @@ public class ChatGpt {
 
 
 
-    private static final String apiKey = "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";
+    private static final String apiKey = "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";
 
     CompletableFuture<String> futureResult = new CompletableFuture<>();
 
@@ -56,7 +56,7 @@ public class ChatGpt {
         final List<ChatMessage> messages = new ArrayList<>();
         final ChatMessage systemMessage = new ChatMessage(
                 ChatMessageRole.SYSTEM.value(), "o usuario vai descrever um automato e voce vai cria-lo e escrever um arquivo jff deve ser criado com jflap 6.4, não dê mais nenhuma informação adicional apenas o arquivo, sem ``` no comeco nem no final");
-        final ChatMessage secondMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(),"exemplo: crie uma afn com alfabeto 0 e 1 que sempre termina em 1. a resposta deve ser:<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!--Created with JFLAP 6.4.--><structure>&#13;<type>fa</type>&#13;<automaton>&#13;<!--The list of states.-->&#13;<state id=\"0\" name=\"q0\">&#13;<x>92.0</x>&#13;<y>200.0</y>&#13;<initial/>&#13;</state>&#13;<state id=\"1\" name=\"q1\">&#13;<x>234.0</x>&#13;<y>194.0</y>&#13;<final/>&#13;</state>&#13;<!--The list of transitions.-->&#13;<transition>&#13;<from>0</from>&#13;<to>0</to>&#13;<read>0</read>&#13;</transition>&#13;<transition>&#13;<from>0</from>&#13;<to>0</to>&#13;<read>1</read>&#13;</transition>&#13;<transition>&#13;<from>0</from>&#13;<to>1</to>&#13;<read>1</read>&#13;</transition>&#13;</automaton>&#13;</structure>");
+        final ChatMessage secondMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(),"exemplo: crie uma afn com alfabeto 0 e 1 que sempre termina em 1. a resposta deve ser:<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!--Created with JFLAP 6.4.--><structure>&#13;<type>fa</type>&#13;<automaton>&#13;<!--The list of states.-->&#13;<state id=\"0\" name=\"q0\">&#13;<x>92.0</x>&#13;<y>200.0</y>&#13;<initial/>&#13;</state>&#13;<state id=\"1\" name=\"q1\">&#13;<x>234.0</x>&#13;<y>194.0</y>&#13;<final/>&#13;</state>&#13;<!--The list of transitions.-->&#13;<transition>&#13;<from>0</from>&#13;<to>0</to>&#13;<read>0</read>&#13;</transition>&#13;<transition>&#13;<from>0</from>&#13;<to>0</to>&#13;<read>1</read>&#13;</transition>&#13;<transition>&#13;<from>0</from>&#13;<to>1</to>&#13;<read>1</read>&#13;</transition>&#13;</automaton>&#13;</structure> sem os tres tracinhos, e sem mensagens extras");
         final ChatMessage userMessage = new ChatMessage("user", request);
 
         messages.add(systemMessage);

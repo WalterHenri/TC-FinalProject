@@ -25,7 +25,7 @@
                                     <Font name="SansSerif Bold" size="16.0" />
                                  </font>
                               </Text>
-                              <Label fx:id="label01Unity" layoutX="11.0" layoutY="42.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
+                              <Label fx:id="label01Unity" layoutX="11.0" layoutY="42.0" maxWidth="184.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
                               <Button fx:id="select01Unity" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#select01Unity" styleClass="openButton" text="Select">
                                  <font>
                                     <Font name="SansSerif Bold" size="13.0" />
@@ -45,7 +45,7 @@
                                     <Font name="SansSerif Bold" size="16.0" />
                                  </font>
                               </Text>
-                              <Label fx:id="label02Unity" layoutX="11.0" layoutY="42.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
+                              <Label fx:id="label02Unity" layoutX="11.0" layoutY="42.0" maxWidth="184.0" minHeight="33.0" minWidth="184.0" prefHeight="33.0" styleClass="pathArea" text="File path..." />
                               <Button fx:id="select02Unity" layoutX="9.0" layoutY="96.0" minHeight="39.0" minWidth="190.0" mnemonicParsing="false" onMouseClicked="#select02Unity" styleClass="openButton" text="Select">
                                  <font>
                                     <Font name="SansSerif Bold" size="13.0" />
