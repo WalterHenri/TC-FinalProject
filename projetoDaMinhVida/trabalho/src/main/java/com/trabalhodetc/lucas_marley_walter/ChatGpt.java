@@ -22,13 +22,9 @@ import io.reactivex.Flowable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.stage.Popup;
-import javafx.stage.Screen;
-import okhttp3.internal.ws.RealWebSocket.Message;
-
 public class ChatGpt {
 
     @FXML
@@ -39,7 +35,7 @@ public class ChatGpt {
 
 
 
-    private static final String apiKey = "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";
+    private static final String apiKey = "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";
 
     CompletableFuture<String> futureResult = new CompletableFuture<>();
 
