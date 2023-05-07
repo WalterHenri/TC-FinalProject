@@ -72,7 +72,6 @@ public class WAController {
         path = getPath(fileChooser);
         at1 = new com.trabalhodetc.uniao_afds_afns.Automato();
         at1.carregaDados(path);
-
         label01Unity.setText(path);
 
     }
@@ -107,6 +106,7 @@ public class WAController {
                 at2 = null;
                 return;
             } else {
+
                 result = result.uniaoAFD(at1, at2);
                 operacaoRealizada = true;
             }
