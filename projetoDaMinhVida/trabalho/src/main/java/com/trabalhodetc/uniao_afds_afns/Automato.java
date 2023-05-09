@@ -6,6 +6,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Automato {
     private List<Estado> estados;
     private List<Transicao> transicoes;
@@ -33,18 +34,12 @@ public class Automato {
         Automato automatoFinal = new Automato();
 
         // Adiciona um estado consumidor e suas transições
-        if (!automato1.isCompletAutomata(automato1, automato2)) {
-            automato1.addEstado(new Estado("d", 0));
+        automato1.addEstado(new Estado("d", 999));
+        automato2.addEstado(new Estado("d", 999));
 
-            for (String simbolo : automato1.getAlfabeto(automato1, automato2))
-                automato1.addTransicao(new Transicao(0, 0, simbolo));
-        }
-
-        if (!automato2.isCompletAutomata(automato1, automato2)) {
-            automato2.addEstado(new Estado("d", 0));
-
-            for (String simbolo : automato2.getAlfabeto(automato1, automato2))
-                automato2.addTransicao(new Transicao(0, 0, simbolo));
+        for (String simbolo : automato1.getAlfabeto(automato1, automato2)) {
+            automato1.addTransicao(new Transicao(999, 999, simbolo));
+            automato2.addTransicao(new Transicao(999, 999, simbolo));
         }
 
         // criando o produto cartesiano entre os estados dos automatos originais
@@ -72,7 +67,7 @@ public class Automato {
 
                     automatoFinal.addTransicao(
                             new Transicao(automatoFinal.getIdEstadoPorNome(
-                                    estado1.getNome() + estado2.getNome()),
+                                        estado1.getNome() + estado2.getNome()),
                                     automatoFinal.getIdEstadoPorNome(
                                             destino1.getNome() + destino2.getNome()),
                                     simbolo));
@@ -154,28 +149,7 @@ public class Automato {
 
         return automatoFinal;
     }
-
-    public Automato uniaoAFN2(Automato automato1, Automato automato2) {
-        Automato automatoFinal = new Automato();
-
-        // criando novo estado incial e setando no automato final
-        Estado novoEstado = new Estado("q0", 0);
-        novoEstado.setInicial(true);
-        novoEstado.setFinal(false);
-        automatoFinal.addEstado(novoEstado);
-
-        // Gerando transicao do novo estado inicial criado, para os antigos inicias do
-        // automatos originais
-        automatoFinal.addAllTransicao(geraTransicoesNovoEstadoInicial(automato1, automato2));
-
-        // renomeia e adiciona os estados no automato final
-        automatoFinal.addAllEstados(renomeiaEstados(automato1, automato2));
-
-        automatoFinal.addAllTransicao(reorganizarTransicoes(automato1, automato2));
-
-        return automatoFinal;
-    }
-
+    
     private List<Transicao> reorganizarTransicoes(Automato automato1, Automato automato2) {
         List<Transicao> listaTransicoes = new ArrayList<Transicao>();
         Transicao novaTransicao = new Transicao();

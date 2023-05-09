@@ -40,7 +40,7 @@
                         </Pane>
                         <ImageView fitHeight="56.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/link.png" />
+                              <Image url="@images/link.png" />
                            </image>
                         </ImageView>
                         <Pane minHeight="157.0" minWidth="206.0" styleClass="cardArea">

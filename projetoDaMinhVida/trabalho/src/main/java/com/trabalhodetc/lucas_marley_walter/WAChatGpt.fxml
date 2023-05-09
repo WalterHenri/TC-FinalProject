@@ -18,12 +18,12 @@
                <children>
                   <ImageView fitHeight="455.0" fitWidth="340.0" layoutX="246.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/broke.png" />
+                        <Image url="@images/broke.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="466.0" fitWidth="377.0" layoutX="278.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/iron.png" />
+                        <Image url="@images/iron.png" />
                      </image>
                   </ImageView>
                   <AnchorPane layoutX="16.0" layoutY="442.0" minHeight="113.0" minWidth="568.0" prefHeight="123.0" prefWidth="570.0" styleClass="cardChatArea">
@@ -42,7 +42,7 @@
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/sendY.png" />
+                                    <Image url="@images/sendY.png" />
                                  </image>
                               </ImageView>
                            </graphic>

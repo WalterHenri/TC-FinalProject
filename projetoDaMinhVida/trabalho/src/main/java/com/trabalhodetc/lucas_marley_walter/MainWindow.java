@@ -19,7 +19,7 @@ public class MainWindow extends Application{
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setResizable(true);
         stage.setTitle("JFlap volume 2");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("../images/logoIcon.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("images/logoIcon.png")));
         ((MainWindowController)loader.getController()).init(stage);
         stage.show();
     }
