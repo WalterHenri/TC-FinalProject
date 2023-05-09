@@ -95,7 +95,7 @@ public class WAController {
 
         Alert alertError = new Alert(Alert.AlertType.INFORMATION);
         alertError.setTitle("JFlap volume 2");
-        alertError.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+        alertError.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
 
         if (optionUnitySelected == 2) {
             if (!at1.verificaSeAutomatoDeterministico(at1) && !at2.verificaSeAutomatoDeterministico(at2)) {
@@ -130,7 +130,7 @@ public class WAController {
             alert.setTitle("JFlap volume 2");
             alert.setContentText("Your automaton has already been saved.");
             alert.setHeaderText("Completed union!");
-            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
             alert.showAndWait();
         }
     }
@@ -159,7 +159,7 @@ public class WAController {
         alert.setTitle("JFlap volume 2");
         alert.setContentText("Your automaton has already been saved.");
         alert.setHeaderText("Completed intersection!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+        alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
         alert.showAndWait();
     }
 
@@ -211,7 +211,7 @@ public class WAController {
         alert.setTitle("JFlap volume 2");
         alert.setContentText("Your automaton has already been saved.");
         alert.setHeaderText("Completed concatenation!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+        alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
         alert.showAndWait();
     }
 
@@ -253,7 +253,7 @@ public class WAController {
             alert.setTitle("JFlap volume 2");
             alert.setContentText("Your automaton has already been saved.");
             alert.setHeaderText("Completed complement!");
-            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
             alert.showAndWait();
 
         } catch (NullPointerException asd) {
@@ -289,7 +289,7 @@ public class WAController {
             alert.setTitle("JFlap volume 2");
             alert.setContentText("Your automaton has already been saved.");
             alert.setHeaderText("Completed star!");
-            alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+            alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
             alert.showAndWait();
 
         } catch (NullPointerException asd) {
@@ -324,7 +324,7 @@ public class WAController {
         alert.setTitle("JFlap volume 2");
         alert.setContentText("Your automaton has already been saved.");
         alert.setHeaderText("Completed conversion!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+        alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
         alert.showAndWait();
 
     }
@@ -354,7 +354,7 @@ public class WAController {
         alert.setTitle("JFlap volume 2");
         alert.setContentText("Your automaton has already been saved.");
         alert.setHeaderText("Completed minimization!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+        alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
         alert.showAndWait();
     }
 

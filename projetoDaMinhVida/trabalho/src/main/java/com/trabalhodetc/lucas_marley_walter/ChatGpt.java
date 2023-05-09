@@ -35,7 +35,7 @@ public class ChatGpt {
 
 
 
-    private static final String apiKey = "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";
+    private static final String apiKey = "";
 
     CompletableFuture<String> futureResult = new CompletableFuture<>();
 
@@ -111,7 +111,7 @@ public class ChatGpt {
         alert.setTitle("JFlap volume 2");
         alert.setContentText("Your jff file was saved.");
         alert.setHeaderText("Your automaton is ready, try open it!");
-        alert.setGraphic(new ImageView(this.getClass().getResource("../images/logoIcon.png").toString()));
+        alert.setGraphic(new ImageView(this.getClass().getResource("images/logoIcon.png").toString()));
         alert.showAndWait();
         
         

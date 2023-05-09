@@ -13,7 +13,7 @@
                <children>
                   <ImageView fitHeight="286.0" fitWidth="292.0" layoutX="138.0" layoutY="132.0" opacity="0.62" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/homeImage.png" />
+                        <Image url="@images/homeImage.png" />
                      </image>
                   </ImageView>
                </children></Pane>
