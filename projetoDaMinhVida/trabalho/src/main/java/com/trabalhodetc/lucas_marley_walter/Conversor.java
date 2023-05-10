@@ -100,7 +100,10 @@ public class Conversor {
             for (Integer integer : list) {
                 Estado tp = afn.getEstado(afn.binarySearch(integer));
                 if(tp.temLambda()){
-                    builder.append(pularLambdas(afn, tp) + "-");
+                    String mp = pularLambdas(afn, tp) + "-";
+                    if(!builder.toString().contains(mp)){
+                        builder.append(mp);
+                    }
                 }
                 if(tp.apenasLambda() == false){
                     if(!builder.toString().contains(tp.getNome()))
