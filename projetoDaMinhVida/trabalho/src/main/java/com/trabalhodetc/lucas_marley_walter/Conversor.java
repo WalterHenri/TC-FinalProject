@@ -1,6 +1,7 @@
 package com.trabalhodetc.lucas_marley_walter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -27,6 +28,7 @@ public class Conversor {
         estados.add(inicial);
         int pilha = 1;
         while(true){
+            System.out.println(inicial);
             for (String simbolo : alfabeto) {
                 String r = praOndeVai(afn, inicial, simbolo);
                 if(r == null){
@@ -68,6 +70,7 @@ public class Conversor {
             }
         }
 
+        Minimizador.removerInaceciveis(afd);
         Minimizador.adicionarEstadoConsumidor(afd);
 
         return afd;
@@ -90,6 +93,7 @@ public class Conversor {
         }
         
         String estados[] = estado.split("-");
+        Arrays.sort(estados);
         StringBuilder builder = new StringBuilder();
         for (String string : estados) {
             Estado e = afn.buscarNome(string);
@@ -135,15 +139,16 @@ public class Conversor {
 
     private static void pularLambdas(Automato afn, Estado estado, StringBuilder builder) {
 
-        if (!estado.temLambda()) {
+        if(builder.toString().contains(estado.getNome()) == false){
             builder.append(estado.getNome() + "-");
+        }
+        else{
             return;
         }
 
-        if (estado.temLambda() && !estado.apenasLambda()) {
-            builder.append(estado.getNome() + "-");
+        if(!estado.temLambda()){
+            return;
         }
-
         List<Integer> transicoes = estado.getListaDeTransicao("");
         if (transicoes != null) {
             for (Integer integer : transicoes) {
